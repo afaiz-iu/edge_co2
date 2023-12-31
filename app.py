@@ -13,28 +13,53 @@ from app_layout import (
     model_layout,
     model_precision_layout,
     power_budget_layout,
-    load_data
+    resource_layout,
+    load_data,
+    load_resource_data
 )
 
 from app_callbacks import (
     device_callback,
     model_callback,
     model_precision_callback,
-    power_budget_callback
+    power_budget_callback,
+    resource_callback
 )
 
 data_c, region_map, embodied_map = load_data()
+res_data_dict = load_resource_data()
 
 # init app
 # app = Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+external_stylesheets = [
+    dbc.themes.BOOTSTRAP,
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+]
+app = Dash(__name__, external_stylesheets=external_stylesheets, suppress_callback_exceptions=True)
 
 navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Device", href="/device", active="exact")),
         dbc.NavItem(dbc.NavLink("Models", href="/models", active="exact")),
-        dbc.NavItem(dbc.NavLink("Model Precision", href="/model-precision", active="exact")),
-        dbc.NavItem(dbc.NavLink("Power Budget", href="/power-budget", active="exact")),
+        dbc.NavItem(dbc.NavLink("Precision", href="/model-precision", active="exact")),
+        dbc.NavItem(dbc.NavLink("Power", href="/power-budget", active="exact")),
+        dbc.NavItem(dbc.NavLink("GPU vs CPU", href="/resources", active="exact")),
+        dbc.NavItem(
+            dbc.NavLink(
+                "Calculator",
+                href="/calculator",
+                active="exact",
+                className='resource-button',
+                style={
+                    'border': '1px solid #fff',  # white border
+                    'padding': '5px 10px',
+                    'margin': '0 10px',
+                    'borderRadius': '5px',
+                    'backgroundColor': '#4e73df', 
+                    'color': '#fff',  # white text
+                }
+            )
+        ),
     ],
     brand="Carbon Footprint of DL Inference on Edge",
     brand_href="/device",
@@ -47,6 +72,7 @@ layouts = {
     '/models': model_layout(),
     '/model-precision': model_precision_layout(),
     '/power-budget': power_budget_layout(),
+    '/resources': resource_layout(),
 }
 
 callbacks = {
@@ -54,6 +80,7 @@ callbacks = {
     '/models': model_callback(app, data_c, region_map, embodied_map),
     '/model-precision': model_precision_callback(app, data_c, region_map, embodied_map),
     '/power-budget': power_budget_callback(app, data_c, region_map, embodied_map),
+    '/resources': resource_callback(app, res_data_dict),
 }
 
 # set up app layout

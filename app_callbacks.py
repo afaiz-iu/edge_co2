@@ -124,9 +124,9 @@ def device_callback(app, data_c, region_map, embodied_map):
             text_prim=filt_data['total_oper_carbon'].round(1),
             text_sec=filt_data['total_emb_carbon'].round(1),
             title_text='Operational and Embodied Carbon',
-            xaxis=dict(title='Device', showgrid=False),
-            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True),
-            yaxis_sec=dict(title='Embodied Carbon (mg)', showgrid=False, zeroline=True, showline=True)        
+            xaxis=dict(title='Device', showgrid=False, linecolor='darkgrey', linewidth=1),
+            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            yaxis_sec=dict(title='Embodied Carbon (mg)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1)        
         )
 
         # throughput and throughput per joule
@@ -140,11 +140,10 @@ def device_callback(app, data_c, region_map, embodied_map):
             text_prim = filt_data['mean_throughput'].round(1),
             text_sec = (filt_data['throughput_per_energy(t_mJ)']*1000).round(1),
             title_text = 'Throughput and Throughput per Joule',
-            xaxis = dict(title='Device', showgrid=False),
-            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True),
-            yaxis_sec = dict(title='Throughput per Joule (X / J)', showgrid=False, zeroline=True, showline=True),
+            xaxis = dict(title='Device', showgrid=False, linecolor='darkgrey', linewidth=1),
+            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            yaxis_sec = dict(title='Throughput per Joule (X / J)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
         )
-        # print(fig_2)
 
         # data for fig 3 and fig 4
         if 'nano8g' in hw_names:
@@ -173,8 +172,8 @@ def device_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='total_infer_time',
             title_text='Mean Inference Time vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Device')
         )
 
@@ -187,8 +186,8 @@ def device_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='power_per_image',
             title_text='Power Consumed Per Image vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Device')
         )
 
@@ -243,9 +242,9 @@ def model_callback(app, data_c, region_map, embodied_map):
             text_prim=filt_data['total_oper_carbon'].round(1),
             text_sec=filt_data['total_emb_carbon'].round(1),
             title_text='Operational and Embodied Carbon',
-            xaxis=dict(title='Model Name', showgrid=False),
-            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True),
-            yaxis_sec=dict(title='Embodied Carbon (mg)', showgrid=False, zeroline=True, showline=True)        
+            xaxis=dict(title='Model Name', showgrid=False, linecolor='darkgrey', linewidth=1),
+            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            yaxis_sec=dict(title='Embodied Carbon (mg)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1)        
         )
 
         # throughput and throughput per joule
@@ -259,9 +258,9 @@ def model_callback(app, data_c, region_map, embodied_map):
             text_prim = filt_data['mean_throughput'].round(1),
             text_sec = (filt_data['throughput_per_energy(t_mJ)']*1000).round(1),
             title_text = 'Throughput and Throughput per Joule',
-            xaxis=dict(title='Model Name', showgrid=False),
-            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True),
-            yaxis_sec = dict(title='Throughput per Joule (X / J)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Model Name', showgrid=False, linecolor='darkgrey', linewidth=1),
+            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            yaxis_sec = dict(title='Throughput per Joule (X / J)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1)
         )
 
         # data for fig 3 and fig 4
@@ -289,8 +288,8 @@ def model_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='total_infer_time',
             title_text='Mean Inference Time vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Model')
         )
 
@@ -303,8 +302,8 @@ def model_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='power_per_image',
             title_text='Power Consumed Per Image vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Model')
         )
 
@@ -358,8 +357,8 @@ def model_precision_callback(app, data_c, region_map, embodied_map):
             text_prim=filt_data['total_oper_carbon'].round(1),
             text_sec=filt_data['total_emb_carbon'].round(1),
             title_text='Operational and Embodied Carbon',
-            xaxis=dict(title='Model Precision', showgrid=False),
-            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Model Precision', showgrid=False, linecolor='darkgrey', linewidth=1),
+            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             yaxis_sec=dict(title='Embodied Carbon (mg)', showgrid=False, zeroline=True, showline=True)        
         )
 
@@ -374,8 +373,8 @@ def model_precision_callback(app, data_c, region_map, embodied_map):
             text_prim = filt_data['mean_throughput'].round(1),
             text_sec = (filt_data['throughput_per_energy(t_mJ)']*1000).round(1),
             title_text = 'Throughput and Throughput per Joule',
-            xaxis=dict(title='Model Precision', showgrid=False),
-            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Model Precision', showgrid=False, linecolor='darkgrey', linewidth=1),
+            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             yaxis_sec = dict(title='Throughput per Joule (X / J)', showgrid=False, zeroline=True, showline=True),
         )
 
@@ -404,8 +403,8 @@ def model_precision_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='total_infer_time',
             title_text='Mean Inference Time vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Precision')
         )
 
@@ -418,8 +417,8 @@ def model_precision_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='power_per_image',
             title_text='Power Consumed Per Image vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Precision')
         )
 
@@ -473,8 +472,8 @@ def power_budget_callback(app, data_c, region_map, embodied_map):
             text_prim=filt_data['total_oper_carbon'].round(1),
             text_sec=filt_data['total_emb_carbon'].round(1),
             title_text='Operational and Embodied Carbon',
-            xaxis=dict(title='Power Budget', showgrid=False),
-            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Power Budget', showgrid=False, linecolor='darkgrey', linewidth=1),
+            yaxis_prim=dict(title='Operational Carbon (g)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             yaxis_sec=dict(title='Embodied Carbon (mg)', showgrid=False, zeroline=True, showline=True)        
         )
 
@@ -490,8 +489,8 @@ def power_budget_callback(app, data_c, region_map, embodied_map):
             text_sec = (filt_data['throughput_per_energy(t_mJ)']*1000).round(1),
             title_text = 'Throughput and Throughput per Joule',
             xaxis=dict(title='Power Budget', showgrid=False),
-            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True),
-            yaxis_sec = dict(title='Throughput per Joule (X / J)', showgrid=False, zeroline=True, showline=True),
+            yaxis_prim = dict(title='Throughput (X)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            yaxis_sec = dict(title='Throughput per Joule (X / J)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
         )
 
         # data for fig 3 and fig 4
@@ -519,8 +518,8 @@ def power_budget_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='total_infer_time',
             title_text='Mean Inference Time vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Total Inference Time (min)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Power Budget')
         )
 
@@ -533,9 +532,161 @@ def power_budget_callback(app, data_c, region_map, embodied_map):
             barmode='group',
             text='power_per_image',
             title_text='Power Consumed Per Image vs. Batch Size',
-            xaxis=dict(title='Batch Size', showgrid=False, type='category'),  # Set x-axis as categorical
-            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True),
+            xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),  # Set x-axis as categorical
+            yaxis=dict(title='Mean Power per Image (W)', showgrid=False, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
             legend=dict(title='Power Budget')
         )
 
         return fig_1, fig_2, fig_3, fig_4
+
+def resource_callback(app, res_data):
+    @app.callback(
+        [
+            Output('res_power_budget', 'options'),  # Output to update power budget dropdown options
+            Output('res_power_budget', 'value')    # Output to set default value for power budget dropdown
+        ],
+        [
+            Input('res_gpu', 'value')  # Input for GPU device dropdown
+        ]
+    )
+    def update_power_budget_options(selected_gpu):
+        gpu_power_budget_map = {
+            'agx64g': [{'label': '15W', 'value': '15W'}, {'label': '30W', 'value': '30W'}, {'label': '50W', 'value': '50W'}],
+            'nano8g': [{'label': '15W', 'value': '15W'}],
+        }
+        options = gpu_power_budget_map.get(selected_gpu, [{'label': 'Select', 'value': 'Select'}])
+        default_value = options[0]['value']
+        return options, default_value
+
+    @app.callback(
+        [
+            Output('res_precision', 'options'),  # Output to update power budget dropdown options
+            Output('res_precision', 'value')    # Output to set default value for power budget dropdown
+        ],
+        [
+            Input('res_gpu', 'value')  # Input for GPU device dropdown
+        ]
+    )
+    def update_power_precision_options(selected_gpu):
+        gpu_precision_map = {
+            'agx64g': [{'label': 'fp32', 'value': 'fp32'}, {'label': 'int8', 'value': 'int8'}],
+            'nano8g': [{'label': 'fp32', 'value': 'fp32'}],
+        }
+        options = gpu_precision_map.get(selected_gpu, [{'label': 'Select', 'value': 'Select'}])
+        default_value = options[0]['value']
+        return options, default_value
+        
+    @app.callback(
+        [
+            Output('resource_graph1', 'figure'),
+            Output('resource_graph2', 'figure'),
+            Output('resource_graph3', 'figure')
+        ],
+        [
+            Input('res_gpu', 'value'),
+            Input('res_batch_size', 'value'),
+            Input('res_precision', 'value'),
+            Input('res_power_budget', 'value'),
+            Input('res_metric', 'value'),
+            Input('res_models', 'value')
+        ]
+    )
+    def update_resource_graphs(gpu_device, batch_size, precision, power_budget, metric, models):
+        #get df for the selected metric
+        res_c = res_data[metric]
+
+        filt_data = res_c[
+            (res_c['batch_size'] == batch_size) &
+            (res_c['precision'] == precision) &
+            (res_c['power_mode'] == power_budget)
+        ]
+
+        metric_parse = {
+            'all_mem': 'used',
+            'all_mem_util': 'used_rate',
+            'all_cpu': 'user_system',
+            'all_power': 'power',
+            'all_cpu_temp': 'temp',
+            'Throughput': 'all_throughput'
+        }
+
+        title_parse = {
+            'used': 'Memory Usage (MB)',
+            'used_rate': 'Memory Util (%)',
+            'user_system': 'CPU Util (%)',
+            'power': 'Power (mW)',
+            'temp': 'CPU Temp (C)',
+            'all_throughput': 'Throughput'
+        }
+
+        met = next((value for label, value in metric_parse.items() if label == metric), None)
+        res_agg = res_c.groupby(["hw_name", "model_name", "batch_size", "power_mode", "precision"])[met].agg(['mean', 'std']).reset_index()
+        res_agg = res_agg.rename(columns={"mean": "{}_mean".format(met), "std": "{}_std".format(met)})
+
+        dev_parse= {"agx64g": "Jetson AGX 64GB (CUDA)", "nano8g": "Jetson NANO 8GB (CUDA)", "cpu": "Jetson AGX 64GB (CPU)"}
+        # traces for each model
+        model_traces_gpu = []
+        for model_name in filt_data['model_name'].unique():
+            model_data = filt_data[(filt_data['model_name'] == model_name) & (filt_data['hw_name'] == gpu_device)]
+            trace = go.Scatter(
+                x=model_data['time'], 
+                y=model_data[met],  
+                mode='lines',
+                name=model_name  
+            )
+            model_traces_gpu.append(trace)
+
+        fig_1 = go.Figure(data=model_traces_gpu)
+        fig_1.update_layout(
+            title=dev_parse[gpu_device],
+            title_x=0.5,
+            template='plotly_white',
+            xaxis=dict(title='Time (s)', showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            yaxis=dict(title=title_parse[met], showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            legend=dict(title='Model'),
+            margin=dict(l=40, r=40, t=60, b=40)
+        )
+
+        model_traces_cpu = []
+        for model_name in filt_data['model_name'].unique():
+            model_data = filt_data[(filt_data['model_name'] == model_name) & (filt_data['hw_name'] == 'cpu')]
+            trace = go.Scatter(
+                x=model_data['time'], 
+                y=model_data[met],  
+                mode='lines',
+                name=model_name  
+            )
+            model_traces_cpu.append(trace)
+
+        fig_2 = go.Figure(data=model_traces_cpu)
+        fig_2.update_layout(
+            title=dev_parse["cpu"],
+            title_x=0.5,
+            template='plotly_white',
+            xaxis=dict(title='Time (s)', showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            yaxis=dict(title=title_parse[met],  showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+            legend=dict(title='Model'),
+            margin=dict(l=40, r=40, t=60, b=40)
+        )
+
+        metric_mean = '{}_mean'.format(met)
+        metric_std = '{}_std'.format(met)
+        batch_sizes = res_agg['batch_size'].unique()
+        res_agg_filt = res_agg[
+            ((res_agg["hw_name"] == gpu_device) | (res_agg["hw_name"] == "cpu")) & 
+            (res_agg["precision"] == precision) &
+            (res_agg["model_name"] == models) &
+            (res_agg["power_mode"] == power_budget)
+        ]
+        fig_3 = px.bar(res_agg_filt, x='batch_size', y=metric_mean, error_y=metric_std,
+                    barmode='group', color='hw_name', 
+                    labels={'batch_size': 'Batch Size', metric_mean: title_parse[met]},
+                    category_orders={'batch_size': sorted(batch_sizes)},
+                    title='Mean and Standard Deviation of {} for selected model'.format(title_parse[met]))
+
+        fig_3.update_layout(xaxis=dict(title='Batch Size', showgrid=False, type='category', linecolor='darkgrey', linewidth=1),
+                        yaxis=dict(title=title_parse[met], showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+                        legend_title='Device',
+                        template='plotly_white')
+                
+        return fig_1, fig_2, fig_3
