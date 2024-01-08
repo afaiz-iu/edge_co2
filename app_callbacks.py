@@ -691,38 +691,38 @@ def resource_callback(app, res_data):
                 
         return fig_1, fig_2, fig_3
     
-def dlcce_callback(app, dlcce, F):
+def dllce_callback(app, dllce, F):
     @app.callback(
         [
-            Output('dlcce_graph1', 'figure'),
-            Output('dlcce_graph2', 'figure'),
-            Output('dlcce_graph3', 'figure')
+            Output('dllce_graph1', 'figure'),
+            Output('dllce_graph2', 'figure'),
+            Output('dllce_graph3', 'figure')
         ],
         [
-            Input('dlcce_model_name', 'value')
+            Input('dllce_model_name', 'value')
         ]
     )
-    def update_dlcce_graphs(selected_models):
-        dlcce_ = dlcce
+    def update_dllce_graphs(selected_models):
+        dllce_ = dllce
         F_values = F
         figures = []
-        for idx, (device, models) in enumerate(dlcce_.items()):
+        for idx, (device, models) in enumerate(dllce_.items()):
             if idx < 3:  # Considering first 3 devices for three graphs
                 traces = []
                 for model, v1 in models.items():
                     if model in selected_models:
                         trace = go.Scatter(
                             x=F_values,
-                            y=v1['dlcce'],
+                            y=v1['dllce'],
                             mode='lines',
                             name=f"{model}"
                         )
                         traces.append(trace)
 
                 layout = go.Layout(
-                    title=f'DLCCE vs F for {device}',
+                    title=f'DLLCE vs F for {device}',
                     xaxis=dict(type='log', title='F', showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
-                    yaxis=dict(title='DLCCE', showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
+                    yaxis=dict(title='DLLCE', showgrid=True, zeroline=True, showline=True, linecolor='darkgrey', linewidth=1),
                     legend=dict(title='Model'),
                     margin=dict(l=40, r=40, t=60, b=40),
                     template='plotly_white'

@@ -29,10 +29,10 @@ def load_resource_data():
     }
     return res_dict
 
-def load_dlcce():
-    with open('dlcce.pkl', 'rb') as f:
-        dlcce = pickle.load(f)
-    return dlcce
+def load_dllce():
+    with open('dllce.pkl', 'rb') as f:
+        dllce = pickle.load(f)
+    return dllce
 
 def base_layout(region_map, b_size):
     layout = dbc.Container([
@@ -593,8 +593,8 @@ def resource_layout():
 
     return layout
 
-def dlcce_layout():
-    dlcce = load_dlcce()
+def dllce_layout():
+    dllce = load_dllce()
     layout = dbc.Container([
         html.Hr(),
         html.Div([
@@ -608,17 +608,17 @@ def dlcce_layout():
                 dbc.Col([
                     html.Label('Model'),
                     dcc.Dropdown(
-                        id='dlcce_model_name',
-                        options=[{'label': model, 'value': model} for model in list(dlcce['agx64g'].keys())],
+                        id='dllce_model_name',
+                        options=[{'label': model, 'value': model} for model in list(dllce['agx64g'].keys())],
                         multi=True,
-                        value=list(dlcce['agx64g'].keys())
+                        value=list(dllce['agx64g'].keys())
                     )
                 ], width=12, style={'margin-top': '10px'}),
             ]),
             dbc.Row([
                 dbc.Col(
                     dbc.Card(
-                        dcc.Graph(id='dlcce_graph1'),
+                        dcc.Graph(id='dllce_graph1'),
                         body=True,
                         className="border-grey mb-3",
                         style={'border': '1px solid rgba(169, 169, 169, 0.5)', 'border-radius': '5px', 'padding': '10px'}
@@ -627,7 +627,7 @@ def dlcce_layout():
                 ),
                 dbc.Col(
                     dbc.Card(
-                        dcc.Graph(id='dlcce_graph2'),
+                        dcc.Graph(id='dllce_graph2'),
                         body=True,
                         className="border-grey mb-3",
                         style={'border': '1px solid rgba(169, 169, 169, 0.5)', 'border-radius': '5px', 'padding': '10px'}
@@ -636,7 +636,7 @@ def dlcce_layout():
                 ),
                 dbc.Col(
                     dbc.Card(
-                        dcc.Graph(id='dlcce_graph3'),
+                        dcc.Graph(id='dllce_graph3'),
                         body=True,
                         className="border-grey mb-3",
                         style={'border': '1px solid rgba(169, 169, 169, 0.5)', 'border-radius': '5px', 'padding': '10px'}
