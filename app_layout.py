@@ -1,6 +1,7 @@
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd 
+import pickle
 
 def load_data():
     all_data = pd.read_csv('all_data.csv')
@@ -27,6 +28,11 @@ def load_resource_data():
         "all_cpu_temp": cpu_temp
     }
     return res_dict
+
+def load_dlcce():
+    with open('dlcce.pkl', 'rb') as f:
+        dlcce = pickle.load(f)
+    return dlcce
 
 def base_layout(region_map, b_size):
     layout = dbc.Container([
@@ -585,4 +591,60 @@ def resource_layout():
     html.Hr(),
     ])
 
+    return layout
+
+def dlcce_layout():
+    dlcce = load_dlcce()
+    layout = dbc.Container([
+        html.Hr(),
+        html.Div([
+            html.P("Power Budget: 50W; Batch Size: 1; Model Precision: 32 bit"),
+            html.P("Assumption: Model Trained on Jetson AGX 64GB"),
+            html.Hr(),
+        ]),
+        html.Div(className='twelve columns', children=[
+            html.H5("Amortization of Training Energy through Inference Energy across Usage Instances"),
+            dbc.Row([
+                dbc.Col([
+                    html.Label('Model'),
+                    dcc.Dropdown(
+                        id='dlcce_model_name',
+                        options=[{'label': model, 'value': model} for model in list(dlcce['agx64g'].keys())],
+                        multi=True,
+                        value=list(dlcce['agx64g'].keys())
+                    )
+                ], width=12, style={'margin-top': '10px'}),
+            ]),
+            dbc.Row([
+                dbc.Col(
+                    dbc.Card(
+                        dcc.Graph(id='dlcce_graph1'),
+                        body=True,
+                        className="border-grey mb-3",
+                        style={'border': '1px solid rgba(169, 169, 169, 0.5)', 'border-radius': '5px', 'padding': '10px'}
+                    ), 
+                    width=4
+                ),
+                dbc.Col(
+                    dbc.Card(
+                        dcc.Graph(id='dlcce_graph2'),
+                        body=True,
+                        className="border-grey mb-3",
+                        style={'border': '1px solid rgba(169, 169, 169, 0.5)', 'border-radius': '5px', 'padding': '10px'}
+                    ), 
+                    width=4
+                ),
+                dbc.Col(
+                    dbc.Card(
+                        dcc.Graph(id='dlcce_graph3'),
+                        body=True,
+                        className="border-grey mb-3",
+                        style={'border': '1px solid rgba(169, 169, 169, 0.5)', 'border-radius': '5px', 'padding': '10px'}
+                    ), 
+                    width=4
+                ),
+            ]),
+        ]),
+        html.Hr(),
+    ])
     return layout

@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -14,8 +15,10 @@ from app_layout import (
     model_precision_layout,
     power_budget_layout,
     resource_layout,
+    dlcce_layout,
     load_data,
-    load_resource_data
+    load_resource_data,
+    load_dlcce
 )
 
 from app_callbacks import (
@@ -23,11 +26,13 @@ from app_callbacks import (
     model_callback,
     model_precision_callback,
     power_budget_callback,
-    resource_callback
+    resource_callback,
+    dlcce_callback
 )
 
 data_c, region_map, embodied_map = load_data()
 res_data_dict = load_resource_data()
+dlcce_dict = load_dlcce()
 
 # init app
 # app = Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -43,6 +48,7 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Models", href="/models", active="exact")),
         dbc.NavItem(dbc.NavLink("Precision", href="/model-precision", active="exact")),
         dbc.NavItem(dbc.NavLink("Power", href="/power-budget", active="exact")),
+        dbc.NavItem(dbc.NavLink("DLCCE", href="/dlcce", active="exact")),
         dbc.NavItem(dbc.NavLink("GPU vs CPU", href="/resources", active="exact")),
         dbc.NavItem(
             dbc.NavLink(
@@ -73,6 +79,7 @@ layouts = {
     '/model-precision': model_precision_layout(),
     '/power-budget': power_budget_layout(),
     '/resources': resource_layout(),
+    '/dlcce': dlcce_layout(),
 }
 
 callbacks = {
@@ -81,6 +88,7 @@ callbacks = {
     '/model-precision': model_precision_callback(app, data_c, region_map, embodied_map),
     '/power-budget': power_budget_callback(app, data_c, region_map, embodied_map),
     '/resources': resource_callback(app, res_data_dict),
+    '/dlcce': dlcce_callback(app, dlcce_dict, np.linspace(100, 1000000000, 10000)),
 }
 
 # set up app layout
